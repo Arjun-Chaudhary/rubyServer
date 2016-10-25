@@ -1,4 +1,6 @@
-##COMP90019: AirCasting Server
+#Ruby Server
+This server will gather data from Aircasting mobile application in Real Time and send it to mysql database for insertion in real time.
+It's a restful server where we are making HTML requests in form of JSON request.
 
 ###About
 
