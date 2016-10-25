@@ -1,0 +1,19 @@
+language: ruby
+cache: bundler
+rvm:
+  - 1.9.3
+  - 2.0.0
+sudo: false
+bundler_args: --without development
+addons:
+  apt:
+    packages:
+    - libgsl0-dev
+services:
+  - redis-server
+before_script:
+  - cp config/database.yml.travis config/database.yml
+  - mysql -e 'create database aircasting_test;'
+  - RAILS_ENV=test bundle exec rake db:migrate
+script:
+  - "bundle exec rspec --color && bundle exec rake spec:javascript"
